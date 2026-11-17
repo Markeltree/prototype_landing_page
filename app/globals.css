@@ -129,16 +129,14 @@ html:has(.levo-landing) { scroll-behavior: auto; }
 .levo-hero__sep { color: var(--lv-faint); }
 .levo-hero__title {
   letter-spacing: -0.04em;
-  flex-direction: column;
-  gap: 0.06em;
   max-width: 16ch;
   margin: 0;
   font-size: clamp(2.4rem, 5.6vw, 6rem);
   font-weight: 500;
   line-height: 1.02;
-  display: flex;
+  display: block;
 }
-.levo-hero__title span { display: block; }
+.levo-hero__title span { display: inline; }
 .levo-hero__title-dim { color: var(--lv-muted); }
 .levo-hero__lede {
   max-width: 46ch;
@@ -457,7 +455,7 @@ html:has(.levo-landing) { scroll-behavior: auto; }
   color: #fff;
   align-items: center;
   gap: 0.35em;
-  font-size: clamp(1.4rem, 5.2vw, 4.4rem);
+  font-size: clamp(1.6rem, 6.2vw, 6rem);
   font-weight: 400;
   display: flex;
   position: relative;

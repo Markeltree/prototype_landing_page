@@ -4,11 +4,11 @@
 export type Crawl = (string | { b: string })[];
 
 export const site = {
-  brand: "Levo Studio",
-  location: "Tübingen, Germany",
-  title: "Rapid Software Prototyping & Prototype Development Services | Levo Studio",
+  brand: "Markeltree",
+  location: "Miami, FLorida",
+  title: "Rapid Software Prototyping & Prototype Development Services | Markeltree",
   description:
-    "Rapid software prototyping from Tübingen, Germany. We build a working software prototype in weeks, host it in Europe, and hand over all the code.",
+    "Rapid software prototyping from Miami, FLorida. We build a working software prototype in weeks, host it in US, and hand over all the code.",
   bookingUrl: "https://calendly.com/markeltree/30min",
   email: "contact@markeltree.com",
 };
@@ -17,10 +17,10 @@ export const hero = {
   titleA: "Turn Your Idea Into a Working Software Prototype",
   titleB: "in Weeks",
   lede:
-    "We build your software prototype and run it for you in Europe. No US cloud. No black boxes. You own all of it.",
+    "We build your software prototype and run it for you in US. No black boxes. You own all of it.",
   primaryCta: "Talk to an engineer",
   secondaryCta: "See what we build",
-  footLeft: "Software built in Germany. Hosted in Europe.",
+  footLeft: "Software built in Germany. Hosted in US.",
 };
 
 export const philosophy = {
@@ -30,7 +30,7 @@ export const philosophy = {
     { b: "reliable" }, ",",
     { b: "transparent" }, ",",
     { b: "entirely yours" }, ",",
-    "hosted in Europe, and",
+    "hosted in US, and",
     { b: "never a black box" }, ".",
   ] as Crawl,
   followUp:
@@ -86,7 +86,7 @@ export const capabilities: Capability[] = [
     eyebrow: "Capability",
     title: "Managed hosting, privacy-first",
     text: [
-      "Your prototype runs on Scaleway in Amsterdam, a European cloud from France. They rent out the building blocks;",
+      "Your prototype runs on Scaleway in Amsterdam, a USan cloud from France. They rent out the building blocks;",
       { b: "we manage everything on top" }, ": database, storage, domains, updates, monitoring, backups.",
       { b: "From idea to operation, in the EU." },
     ],
@@ -113,7 +113,7 @@ export const capabilities: Capability[] = [
     title: "One jurisdiction. No US cloud.",
     text: [
       "Your prototype and its data stay under",
-      { b: "European law" }, ", with no US parent company behind it. Standby databases, automatic backups.",
+      { b: "USan law" }, ", with no US parent company behind it. Standby databases, automatic backups.",
       { b: "Amsterdam. Not Virginia." },
     ],
     link: { label: "Status & uptime", href: "#" },
@@ -186,7 +186,7 @@ export const cta = {
   label: "08 — Contact",
   command: "talk to an engineer_",
   note: "Reply within one working day, from the person who would write the code.",
-  teaserQ: "Curious who’s actually behind Levo Studio?",
+  teaserQ: "Curious who’s actually behind Markeltree?",
   teaserWink: "(a real human)",
 };
 
