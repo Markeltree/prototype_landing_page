@@ -8,6 +8,7 @@ import {
   whatIs,
   capabilitiesHead,
   capabilities,
+  portfolio,
   cta,
   footerLinks,
 } from "@/content";
@@ -21,6 +22,20 @@ export default function Home() {
   return (
     <main className="levo-landing">
       <div className="levo-grain" aria-hidden="true" />
+
+      <header className="levo-header">
+        <a href="/" className="levo-header__logo" aria-label="Markeltree home">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/markeltree-logo.png" alt="Markeltree" width={534} height={120} />
+        </a>
+        <a
+          className="levo-header__cta"
+          href={site.bookingUrl}
+          {...external(site.bookingUrl)}
+        >
+          {hero.primaryCta}
+        </a>
+      </header>
 
       {/* Hero */}
       <section className="levo-hero" aria-labelledby="hero-title">
@@ -142,6 +157,36 @@ export default function Home() {
           </div>
         </section>
       ))}
+
+      {/* Portfolio */}
+      <section id="portfolio" className="levo-work" aria-labelledby="work-title">
+        <div className="levo-work__head">
+          <div>
+            <p className="levo-eyebrow">{portfolio.label}</p>
+            <h2 id="work-title">{portfolio.title}</h2>
+          </div>
+        </div>
+        <ul className="levo-work__grid">
+          {portfolio.items.map((p) => (
+            <li key={p.name}>
+              <div className="levo-work__item">
+                <span className="levo-work__img">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={p.image} alt={`${p.name} case study`} loading="lazy" width={800} height={500} />
+                </span>
+                <span className="levo-work__meta">
+                  {p.service} · {p.industry}
+                </span>
+                <span className="levo-work__name">{p.name}</span>
+                <span className="levo-work__text">{p.text}</span>
+                <span className="levo-work__stat">
+                  <strong>{p.stat}</strong> {p.statLabel}
+                </span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       {/* Contact */}
       <section id="kontakt" className="levo-cta" aria-labelledby="cta-link">

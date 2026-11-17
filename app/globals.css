@@ -54,6 +54,35 @@ html:has(.levo-landing) { scroll-behavior: auto; }
 
 .levo-landing .w { will-change: filter, opacity, color; display: inline-block; }
 
+/* ---------- Header ---------- */
+.levo-header {
+  z-index: 50;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 6vw;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.levo-header__logo { display: inline-flex; }
+.levo-header__logo img { width: auto; height: 34px; display: block; }
+.levo-landing .levo-header__cta {
+  color: #fff;
+  border: 1px solid var(--lv-hairline-strong);
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: 14px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.levo-landing .levo-header__cta:hover { color: var(--lv-green); border-color: var(--lv-green); }
+@media (max-width: 640px) {
+  .levo-header { padding: 20px 6vw; }
+  .levo-header__logo img { height: 26px; }
+  .levo-landing .levo-header__cta { padding: 7px 14px; font-size: 13px; }
+}
+
 /* ---------- Hero ---------- */
 @keyframes levo-hero-in {
   0% { opacity: 0; filter: blur(8px); transform: translateY(28px); }
@@ -323,6 +352,85 @@ html:has(.levo-landing) { scroll-behavior: auto; }
 .levo-card__svg { width: 100%; max-height: 70vh; overflow: visible; }
 .levo-card__svg--wide { max-height: 74vh; }
 .levo-landing .draw { will-change: stroke-dashoffset, opacity; }
+
+/* ---------- Portfolio ---------- */
+.levo-work { border-top: 1px solid var(--lv-hairline); padding: 14vh 6vw; position: relative; background: var(--lv-bg); }
+.levo-work__head {
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  margin-bottom: 56px;
+  display: flex;
+}
+.levo-work__head h2 {
+  letter-spacing: -0.03em;
+  margin: 18px 0 0;
+  font-size: clamp(1.9rem, 3.6vw, 3rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+.levo-work__grid {
+  list-style: none;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  display: grid;
+}
+.levo-work__item {
+  color: #fff;
+  border: 1px solid var(--lv-hairline);
+  border-radius: 14px;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  padding: 14px 14px 22px;
+  display: flex;
+}
+.levo-work__img {
+  aspect-ratio: 16 / 10;
+  background: #111113;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  display: block;
+  overflow: hidden;
+}
+.levo-work__img img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.levo-work__meta {
+  font-family: var(--lv-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--lv-faint);
+  padding: 0 6px;
+  font-size: 11px;
+}
+.levo-work__name { letter-spacing: -0.02em; padding: 0 6px; font-size: 1.45rem; font-weight: 500; }
+.levo-work__text { color: var(--lv-muted); flex: 1; padding: 0 6px; font-size: 15px; line-height: 1.55; }
+.levo-work__stat {
+  border-top: 1px solid var(--lv-hairline);
+  color: var(--lv-muted);
+  margin: 8px 6px 0;
+  padding-top: 14px;
+  font-size: 13px;
+}
+.levo-work__stat strong {
+  color: var(--lv-green);
+  font-family: var(--lv-mono);
+  margin-right: 6px;
+  font-size: 15px;
+  font-weight: 500;
+}
+@media (max-width: 1000px) { .levo-work__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+  .levo-work { padding: 12vh 6vw; }
+  .levo-work__head { flex-direction: column; align-items: flex-start; margin-bottom: 36px; }
+  .levo-work__grid { grid-template-columns: 1fr; }
+}
 
 /* ---------- CTA ---------- */
 .levo-cta {

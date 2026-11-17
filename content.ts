@@ -121,8 +121,69 @@ export const capabilities: Capability[] = [
   },
 ];
 
+export const portfolio = {
+  label: "07 — Portfolio",
+  title: "Prototypes that became products",
+  items: [
+    {
+      name: "WORTH",
+      service: "Web Design & Development",
+      industry: "Coaching & Wellness",
+      text: "A calm, trustworthy coaching platform with booking, payments, memberships, member login, community and a content hub.",
+      stat: "13",
+      statLabel: "Key features delivered",
+      image: "/case-studies/worth-thumbnail.webp",
+    },
+    {
+      name: "Advisory CRM",
+      service: "Software Development",
+      industry: "Finance & Insurance",
+      text: "A compliance-first CRM taking advisory leads from first contact to in-force client, with consent, licensing and advisor approval built into every step.",
+      stat: "0",
+      statLabel: "Calls placed without consent",
+      image: "/case-studies/advisory-crm-thumbnail.webp",
+    },
+    {
+      name: "ContentScale",
+      service: "AI Development",
+      industry: "Generative AI",
+      text: "An AI content platform combining writing assistants, image generation, document intelligence, RAG knowledge retrieval and workflow automation.",
+      stat: "5",
+      statLabel: "AI services in one platform",
+      image: "/case-studies/contentscale-card.webp",
+    },
+    {
+      name: "EstateFlow",
+      service: "Software Development",
+      industry: "Real Estate CRM",
+      text: "One workspace for leads, listings, viewings, deals and commissions for a UAE brokerage.",
+      stat: "2 min",
+      statLabel: "Avg first response, down from 3 hours",
+      image: "/case-studies/estateflow-card.webp",
+    },
+    {
+      name: "Kartly",
+      service: "Mobile App Development",
+      industry: "E-Commerce",
+      text: "A mobile-first shopping app with smart search, one-page checkout and in-app order tracking.",
+      stat: "38%",
+      statLabel: "Higher mobile conversion",
+      image: "/case-studies/kartly-card.webp",
+    },
+    {
+      name: "Teamora",
+      service: "Software Development",
+      industry: "HR & Workforce",
+      text: "An in-house employee management system for a growing company.",
+      stat: "<1 day",
+      statLabel: "Payroll run, down from 4",
+      image: "/case-studies/teamora-card.webp",
+    },
+  ],
+};
+
 export const cta = {
-  label: "07 — Contact",
+  label: "08 — Contact",
   command: "talk to an engineer_",
   note: "Reply within one working day, from the person who would write the code.",
   teaserQ: "Curious who’s actually behind Levo Studio?",
