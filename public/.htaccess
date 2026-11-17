@@ -1,0 +1,29 @@
+# Deployed with the site from public/.htaccess — edit it in the repo, not on the server.
+
+Options -Indexes
+ErrorDocument 404 /404.html
+
+# Old site pages -> new homepage (keeps their search ranking)
+<IfModule mod_alias.c>
+  RedirectMatch 301 ^/(about|blog|blogs|contact|project|projects|service|services)(/.*)?$ /
+  RedirectMatch 301 ^/(200|index)\.html$ /
+</IfModule>
+
+<IfModule mod_headers.c>
+  # HTML and Next.js route data: always check for a fresh copy, so updates show immediately
+  <FilesMatch "\.(html|txt)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  # Images, fonts: cache for 30 days
+  <FilesMatch "\.(png|jpe?g|webp|avif|svg|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>
+
+# Hashed build files never change: cache for a year
+<IfModule mod_headers.c>
+  <If "%{REQUEST_URI} =~ m#^/_next/static/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+</IfModule>
