@@ -114,15 +114,59 @@ html:has(.levo-landing) { scroll-behavior: auto; }
 .levo-hero .levo-hero__lede { margin-top: 26px; font-size: clamp(1.05rem, 1.35vw, 1.3rem); }
 .levo-hero .levo-hero__actions { margin-top: 36px; }
 .levo-hero .levo-btn { gap: 10px; height: 58px; padding: 0 32px; font-size: 16px; }
-.lt-visual { position: relative; }
-.lt-visual::before {
+/* Device showcase (laptops + phones) */
+.lt-show { aspect-ratio: 1 / 0.86; position: relative; }
+.lt-show::before {
   content: "";
-  z-index: -1;
-  background: radial-gradient(closest-side, #08bf6390, #08bf6326 50%, #08bf6300 100%);
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 34% 16% at 58% 79%, #0bd46ff2, #08bf6380 45%, #08bf6300 100%),
+    radial-gradient(ellipse 46% 42% at 56% 52%, #08bf63c2, #08bf6359 50%, #08bf6300 100%),
+    radial-gradient(ellipse 50% 50% at 52% 50%, #08bf6352, #08bf6300 100%);
   position: absolute;
-  inset: -12% -6% -4% 4%;
+  inset: -16% -16% -20% -12%;
 }
-.lt-visual__svg { width: 100%; height: auto; display: block; transform: perspective(1400px) rotateY(-10deg) rotateX(3deg); }
+.lt-laptop { position: absolute; }
+.lt-laptop__screen {
+  background: #0b0c0c;
+  border-radius: 14px;
+  padding: 2.2%;
+  box-shadow: 0 0 0 2px #5d6260, 0 0 0 3px #202322, 0 30px 60px #000000b3;
+}
+.lt-laptop__screen img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top left; border-radius: 4px; width: 100%; height: auto; display: block; }
+.lt-laptop__base {
+  background: linear-gradient(#d9dddc, #8d9290 55%, #4b4f4e);
+  border-radius: 2px 2px 14px 14px;
+  width: 114%;
+  height: 0;
+  margin-left: -7%;
+  padding-bottom: 3.6%;
+  position: relative;
+  box-shadow: 0 18px 30px #000000b3;
+}
+.lt-laptop__base::after {
+  content: "";
+  background: #6f7472;
+  border-radius: 0 0 8px 8px;
+  width: 16%;
+  height: 40%;
+  position: absolute;
+  top: 0;
+  left: 42%;
+}
+.lt-laptop--back { z-index: 1; width: 76%; top: 0; right: 3%; transform: perspective(1800px) rotateY(-16deg) rotateX(5deg) rotate(-3deg); }
+.lt-laptop--front { z-index: 3; width: 60%; bottom: 3%; right: 12%; transform: perspective(1800px) rotateY(-10deg) rotateX(6deg); }
+.lt-phone {
+  background: #0d0e0e;
+  border-radius: 16% / 7.8%;
+  padding: 0.9%; /* % of .lt-show width: ~3.4% of the phone */
+  position: absolute;
+  box-shadow: 0 0 0 2px #9aa09d, 0 0 0 3.5px #2a2d2c, 0 30px 50px #000000cc;
+}
+.lt-phone__screen { border-radius: 12.5% / 6%; width: 100%; height: auto; display: block; }
+.lt-phone--apply { z-index: 2; width: 24%; top: 16%; right: -2%; transform: perspective(1200px) rotateY(-16deg) rotate(4deg); }
+.lt-phone--red { z-index: 4; width: 27%; top: 30%; left: 1%; transform: perspective(1200px) rotateY(18deg) rotate(-5deg); }
 
 /* ---------- Hero rows: packages + workflow ---------- */
 .lt-row {
@@ -221,7 +265,7 @@ html:has(.levo-landing) { scroll-behavior: auto; }
 
 @media (max-width: 1000px) {
   .lt-hero__top { grid-template-columns: minmax(0, 1fr); gap: 48px; }
-  .lt-visual { max-width: 620px; }
+  .lt-show { width: 100%; max-width: 640px; }
   .lt-row { grid-template-columns: minmax(0, 1fr); gap: 24px; }
 }
 @media (max-width: 720px) {
