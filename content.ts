@@ -9,8 +9,8 @@ export const site = {
   title: "Rapid Software Prototyping & Prototype Development Services | Levo Studio",
   description:
     "Rapid software prototyping from Tübingen, Germany. We build a working software prototype in weeks, host it in Europe, and hand over all the code.",
-  bookingUrl: "#kontakt", // e.g. your cal.com / calendly link
-  email: "hello@levo-studio.com",
+  bookingUrl: "https://calendly.com/markeltree/30min",
+  email: "contact@markeltree.com",
 };
 
 export const hero = {
