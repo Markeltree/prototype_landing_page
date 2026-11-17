@@ -1,9 +1,13 @@
 import ScrollFx from "@/components/ScrollFx";
 import { CrawlText } from "@/components/CrawlText";
 import { Diagram } from "@/components/Diagrams";
+import { HeroVisual } from "@/components/HeroVisual";
+import { Packages } from "@/components/Packages";
 import {
   site,
   hero,
+  packages,
+  workflow,
   philosophy,
   whatIs,
   capabilitiesHead,
@@ -17,6 +21,22 @@ const external = (href: string) =>
   href.startsWith("http")
     ? { target: "_blank", rel: "noopener noreferrer" }
     : {};
+
+const stepIcons = {
+  bulb: "M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.8.6 1.1 1.4 1.1 2.2h5c0-.8.3-1.6 1.1-2.2A6 6 0 0 0 12 3z",
+  layers: "M12 3l9 5-9 5-9-5 9-5zM3 12.5l9 5 9-5M3 16.5l9 5 9-5",
+  code: "M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16",
+  play: "M8 5v14l11-7z",
+  rocket: "M14 4c3-1.5 6-1 6-1s.5 3-1 6l-6 6-5-5 6-6zM9 10H5l-2 3 4 1M14 15v4l-3 2-1-4M5 19c0-2 1-3 2-3s2 1 2 2-1 2-4 1zM15.5 7.5h.01",
+} as const;
+
+function StepIcon({ name }: { name: keyof typeof stepIcons }) {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d={stepIcons[name]} />
+    </svg>
+  );
+}
 
 export default function Home() {
   return (
@@ -33,49 +53,59 @@ export default function Home() {
           href={site.bookingUrl}
           {...external(site.bookingUrl)}
         >
-          {hero.primaryCta}
+          {hero.headerCta}
         </a>
       </header>
 
       {/* Hero */}
       <section className="levo-hero" aria-labelledby="hero-title">
         <div className="levo-hero__glow" aria-hidden="true" />
-        <div className="hero-in">
-          <p className="levo-hero__meta">
-            <span className="levo-hero__dot" aria-hidden="true" />
-            <span>{site.brand}</span>
-            <span className="levo-hero__sep" aria-hidden="true">
-              /
-            </span>
-            <span>{site.location}</span>
-          </p>
-          <h1 id="hero-title" className="levo-hero__title">
-            <span>{hero.titleA}</span>{" "}
-            <span className="levo-hero__title-dim">{hero.titleB}</span>
-          </h1>
-          <p className="levo-hero__lede">{hero.lede}</p>
-          <div className="levo-hero__actions">
-            <a
-              className="levo-btn"
-              href={site.bookingUrl}
-              {...external(site.bookingUrl)}
-            >
-              {hero.primaryCta}
-            </a>
-            <a
-              className="levo-hero__textlink"
-              href="#leistungen"
-              data-lux-target="first-card-end"
-            >
-              {hero.secondaryCta}
-            </a>
+        <div className="lt-hero__top">
+          <div className="hero-in">
+            <p className="levo-hero__meta">
+              <span className="levo-hero__dot" aria-hidden="true" />
+              <span>{hero.eyebrow}</span>
+            </p>
+            <h1 id="hero-title" className="levo-hero__title">
+              <span>{hero.titleA}</span>{" "}
+              <span className="levo-hero__title-dim">{hero.titleB}</span>
+            </h1>
+            <p className="levo-hero__lede">{hero.lede}</p>
+            <div className="levo-hero__actions">
+              <a className="levo-btn" href="#packages">
+                {hero.primaryCta} <span aria-hidden="true">→</span>
+              </a>
+              <a className="levo-hero__textlink" href="#workflow">
+                {hero.secondaryCta}
+              </a>
+            </div>
           </div>
+          <HeroVisual />
         </div>
-        <div className="levo-hero__foot" aria-hidden="true">
-          <span>{hero.footLeft}</span>
-          <span className="levo-hero__scroll">
-            Scroll <span />
-          </span>
+
+        <div id="packages" className="lt-row lt-packages">
+          <div className="lt-row__intro">
+            <h2>{packages.title}</h2>
+            <p>{packages.text}</p>
+          </div>
+          <Packages />
+        </div>
+
+        <div id="workflow" className="lt-row lt-workflow">
+          <div className="lt-row__intro">
+            <h2>{workflow.title}</h2>
+          </div>
+          <ol className="lt-steps">
+            {workflow.steps.map((s) => (
+              <li key={s.name} className="lt-step">
+                <span className="lt-step__icon" aria-hidden="true">
+                  <StepIcon name={s.icon} />
+                </span>
+                <span className="lt-step__name">{s.name}</span>
+                <span className="lt-step__text">{s.text}</span>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

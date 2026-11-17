@@ -14,13 +14,35 @@ export const site = {
 };
 
 export const hero = {
-  titleA: "Turn Your Idea Into a Working Software Prototype",
-  titleB: "in Weeks",
+  eyebrow: "Software Prototyping",
+  titleA: "Turn Your Idea Into a Working Prototype",
+  titleB: "in Weeks.",
   lede:
-    "We build your software prototype and run it for you in US. No black boxes. You own all of it.",
-  primaryCta: "Talk to an engineer",
-  secondaryCta: "See what we build",
-  footLeft: "Software built in Germany. Hosted in US.",
+    "Validate your idea, demonstrate it to investors, or prepare for MVP development with experienced engineers.",
+  primaryCta: "Explore Prototype Packages",
+  secondaryCta: "See how it works",
+  headerCta: "Talk to an engineer",
+};
+
+export const packages = {
+  title: "Choose Your Prototype Package",
+  text: "Three practical starting points to turn your idea into a working prototype.",
+  items: [
+    { name: "Starter Prototype", price: "$999", text: "A technical proof of concept for one core function." },
+    { name: "Interactive Prototype", price: "$2,499", text: "A clickable, interactive prototype with key user flows." },
+    { name: "AI Functional Prototype", price: "$4,999", text: "A working prototype with AI features and real integrations." },
+  ],
+};
+
+export const workflow = {
+  title: "Our Prototyping Workflow",
+  steps: [
+    { icon: "bulb", name: "Discover", text: "Understand your idea" },
+    { icon: "layers", name: "Scope", text: "Define features & flow" },
+    { icon: "code", name: "Build", text: "Develop your prototype" },
+    { icon: "play", name: "Test", text: "Get feedback & refine" },
+    { icon: "rocket", name: "Grow", text: "Plan your next phase" },
+  ] as const,
 };
 
 export const philosophy = {
