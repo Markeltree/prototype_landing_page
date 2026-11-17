@@ -40,5 +40,5 @@ jobs:
             set ftp:ssl-allow no;
             set net:max-retries 3;
             set net:timeout 30;
-            mirror --reverse --verbose --parallel=4 ./out/ ./;
+            mirror --reverse --verbose --no-perms --parallel=1 ./out/ ./;
             bye"
