@@ -1,0 +1,455 @@
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { background: #070708; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #fff;
+  background: #070708;
+  font-family: var(--font-geist-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { color: #fff; background: #08bf6373; }
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent] { overscroll-behavior: contain; }
+
+/* ---------- Landing ---------- */
+.levo-landing {
+  --lv-bg: #070708;
+  --lv-green: #08bf63;
+  --lv-muted: #8a8a86;
+  --lv-faint: #5a5a57;
+  --lv-hairline: #ffffff14;
+  --lv-hairline-strong: #ffffff24;
+  --lv-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --lv-sans: var(--font-geist-sans), "Inter", sans-serif;
+  background: var(--lv-bg);
+  color: #fff;
+  font-family: var(--lv-sans);
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: clip;
+}
+html:has(.levo-landing) { scroll-behavior: auto; }
+.levo-landing a { color: var(--lv-green); text-decoration: none; }
+.levo-landing a:hover { color: #fff; }
+
+/* Film grain overlay */
+.levo-grain {
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.055;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  position: fixed;
+  inset: 0;
+}
+
+.levo-landing .w { will-change: filter, opacity, color; display: inline-block; }
+
+/* ---------- Hero ---------- */
+@keyframes levo-hero-in {
+  0% { opacity: 0; filter: blur(8px); transform: translateY(28px); }
+  to { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+.levo-hero .hero-in > * { animation: 1.05s cubic-bezier(0.22, 0.61, 0.36, 1) both levo-hero-in; }
+.levo-hero .hero-in > :first-child { animation-delay: 80ms; }
+.levo-hero .hero-in > :nth-child(2) { animation-delay: 0.2s; }
+.levo-hero .hero-in > :nth-child(3) { animation-delay: 0.32s; }
+.levo-hero .hero-in > :nth-child(4) { animation-delay: 0.44s; }
+.levo-hero .hero-in > :nth-child(5) { animation-delay: 0.56s; }
+
+.levo-hero {
+  isolation: isolate;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 6vw;
+  display: flex;
+  position: relative;
+}
+.levo-hero__glow {
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(closest-side, #08bf631a, #08bf6300 70%);
+  width: 90vw;
+  height: 90vh;
+  position: absolute;
+  top: -20vh;
+  left: -10vw;
+}
+.levo-hero__meta {
+  font-family: var(--lv-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lv-muted);
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 38px;
+  font-size: 12px;
+  display: flex;
+}
+.levo-hero__dot { background: var(--lv-green); border-radius: 50%; width: 6px; height: 6px; display: inline-block; }
+.levo-hero__sep { color: var(--lv-faint); }
+.levo-hero__title {
+  letter-spacing: -0.04em;
+  flex-direction: column;
+  gap: 0.06em;
+  max-width: 16ch;
+  margin: 0;
+  font-size: clamp(2.4rem, 5.6vw, 6rem);
+  font-weight: 500;
+  line-height: 1.02;
+  display: flex;
+}
+.levo-hero__title span { display: block; }
+.levo-hero__title-dim { color: var(--lv-muted); }
+.levo-hero__lede {
+  max-width: 46ch;
+  color: var(--lv-muted);
+  margin: 40px 0 0;
+  font-size: clamp(1rem, 1.25vw, 1.15rem);
+  line-height: 1.55;
+}
+.levo-hero__actions { align-items: center; gap: 20px; margin-top: 44px; display: flex; }
+.levo-landing .levo-hero__textlink {
+  color: var(--lv-muted);
+  border-bottom: 1px solid var(--lv-hairline-strong);
+  padding-bottom: 3px;
+  font-size: 14px;
+}
+.levo-landing .levo-hero__textlink:hover { color: #fff; }
+.levo-hero__foot {
+  font-family: var(--lv-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--lv-faint);
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 11px;
+  display: flex;
+  position: absolute;
+  bottom: 34px;
+  left: 6vw;
+  right: 6vw;
+}
+.levo-hero__scroll { align-items: center; gap: 8px; display: flex; }
+.levo-hero__scroll span {
+  background: linear-gradient(var(--lv-faint), transparent);
+  width: 1px;
+  height: 26px;
+  display: inline-block;
+}
+
+.levo-landing .levo-btn {
+  background: var(--lv-green);
+  color: #070708;
+  min-width: 180px;
+  height: 48px;
+  font-family: var(--lv-sans);
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  border: 0;
+  border-radius: 999px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 28px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+}
+.levo-landing .levo-btn:hover { color: #070708; background: #3dd585; transform: translateY(-1px); }
+
+/* ---------- Pinned sections ---------- */
+.levo-pin { position: relative; }
+.levo-pin__sticky {
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  padding: 0 6vw;
+  display: flex;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+}
+.levo-eyebrow {
+  font-family: var(--lv-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lv-faint);
+  font-size: 11px;
+}
+
+.levo-philosophy { height: 340vh; }
+.levo-philosophy__glow {
+  pointer-events: none;
+  background: radial-gradient(closest-side, #08bf6312, #08bf6300 70%);
+  width: 80vw;
+  height: 90vh;
+  position: absolute;
+  bottom: -40vh;
+  right: -10vw;
+}
+.levo-philosophy__label { margin: 0 0 44px; }
+.levo-philosophy__text {
+  letter-spacing: -0.03em;
+  max-width: min(24ch, 92vw);
+  margin: 0;
+  font-size: clamp(1.7rem, 3.8vw, 3.6rem);
+  font-weight: 500;
+  line-height: 1.12;
+}
+.levo-philosophy__follow {
+  max-width: 52ch;
+  color: var(--lv-muted);
+  margin: 36px 0 0;
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  line-height: 1.55;
+}
+
+/* ---------- What is software prototyping ---------- */
+.levo-whatis {
+  border-top: 1px solid var(--lv-hairline);
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 4vw;
+  padding: 16vh 6vw;
+}
+.levo-whatis h2 {
+  letter-spacing: -0.03em;
+  margin: 0;
+  font-size: clamp(1.9rem, 3.6vw, 3rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+.levo-whatis p {
+  max-width: 52ch;
+  color: var(--lv-muted);
+  margin: 0;
+  font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+  line-height: 1.6;
+}
+
+.levo-pinbar {
+  background: var(--lv-hairline);
+  width: min(420px, 60vw);
+  height: 1px;
+  margin-top: 56px;
+  position: relative;
+}
+.levo-pinbar__fill { background: var(--lv-green); width: 0%; position: absolute; inset: 0 auto 0 0; }
+
+.levo-leistungen-head {
+  border-top: 1px solid var(--lv-hairline);
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  padding: 14vh 6vw 6vh;
+  display: flex;
+}
+.levo-leistungen-head h2 {
+  letter-spacing: -0.03em;
+  margin: 0;
+  font-size: clamp(1.9rem, 3.6vw, 3rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+/* ---------- Capability cards ---------- */
+.levo-card { height: 300vh; }
+.levo-card__sticky {
+  background: var(--lv-bg);
+  border-top: 1px solid var(--lv-hairline);
+  grid-template-columns: 1.02fr 0.98fr;
+  align-items: center;
+  gap: 4vw;
+  height: 100vh;
+  padding: 0 6vw;
+  display: grid;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 -50px 90px #000000bf;
+}
+.levo-card__tag { align-items: baseline; gap: 16px; margin: 0 0 26px; display: flex; }
+.levo-card__num { font-family: var(--lv-mono); color: var(--lv-green); letter-spacing: 0.12em; font-size: 12px; }
+.levo-card h3 {
+  letter-spacing: -0.03em;
+  margin: 0 0 30px;
+  font-size: clamp(1.8rem, 3.4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.05;
+}
+.levo-card__text {
+  letter-spacing: -0.01em;
+  max-width: 34ch;
+  margin: 0;
+  font-size: clamp(1.05rem, 1.6vw, 1.6rem);
+  line-height: 1.45;
+}
+.levo-landing .levo-card__link {
+  font-family: var(--lv-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lv-green);
+  align-items: center;
+  gap: 10px;
+  margin-top: 40px;
+  font-size: 12px;
+  display: inline-flex;
+}
+.levo-landing .levo-card__link:hover { color: #fff; }
+.levo-card__link span { font-size: 15px; }
+.levo-card__points {
+  list-style: none;
+  max-width: 46ch;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+  color: var(--lv-muted);
+  font-size: clamp(0.98rem, 1.25vw, 1.15rem);
+  line-height: 1.5;
+}
+.levo-card__points li { border-left: 1px solid var(--lv-hairline-strong); padding-left: 16px; }
+.levo-card__points strong { color: #fff; font-weight: 500; }
+.levo-card__svg { width: 100%; max-height: 70vh; overflow: visible; }
+.levo-card__svg--wide { max-height: 74vh; }
+.levo-landing .draw { will-change: stroke-dashoffset, opacity; }
+
+/* ---------- CTA ---------- */
+.levo-cta {
+  border-top: 1px solid var(--lv-hairline);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 96vh;
+  padding: 0 6vw;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+.levo-cta__glow {
+  pointer-events: none;
+  background: radial-gradient(58% 46% at 50% 60%, #08bf631a, #08bf6300 72%);
+  position: absolute;
+  inset: 0;
+}
+.levo-cta__label { margin: 0 0 46px; }
+.levo-landing .levo-cta__link {
+  font-family: var(--lv-mono);
+  letter-spacing: -0.02em;
+  color: #fff;
+  align-items: center;
+  gap: 0.35em;
+  font-size: clamp(1.4rem, 5.2vw, 4.4rem);
+  font-weight: 400;
+  display: flex;
+  position: relative;
+}
+.levo-landing .levo-cta__link:hover,
+.levo-cta__chevron { color: var(--lv-green); }
+.levo-cta__cursor {
+  background: var(--lv-green);
+  width: 0.55em;
+  height: 1.05em;
+  animation: 1.05s step-end infinite levo-blink;
+  display: inline-block;
+  transform: translateY(0.1em);
+}
+@keyframes levo-blink {
+  0%, 49% { opacity: 1; }
+  50%, to { opacity: 0; }
+}
+.levo-cta__note {
+  color: var(--lv-muted);
+  text-align: center;
+  max-width: 44ch;
+  margin: 44px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  position: relative;
+}
+.levo-landing .levo-cta__mail {
+  font-family: var(--lv-mono);
+  letter-spacing: 0.02em;
+  color: var(--lv-green);
+  border-bottom: 1px solid #08bf634d;
+  margin-top: 18px;
+  padding-bottom: 2px;
+  font-size: 14px;
+  transition: color 0.16s, border-color 0.16s;
+  position: relative;
+}
+.levo-landing .levo-cta__mail:hover { color: #fff; border-bottom-color: #ffffff80; }
+
+/* ---------- About teaser ---------- */
+.levo-about-teaser { justify-content: center; padding: 8vh 6vw 4vh; display: flex; }
+.levo-landing .levo-about-teaser__link {
+  text-align: center;
+  font-family: var(--lv-mono);
+  letter-spacing: 0.04em;
+  color: var(--lv-muted);
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  transition: color 0.2s;
+  display: inline-flex;
+}
+.levo-about-teaser__b { align-items: center; gap: 12px; display: inline-flex; }
+.levo-landing .levo-about-teaser__link:hover { color: #fff; }
+.levo-about-teaser__wink { color: var(--lv-faint); transition: color 0.2s; }
+.levo-landing .levo-about-teaser__link:hover .levo-about-teaser__wink { color: var(--lv-green); }
+.levo-about-teaser__arrow { color: var(--lv-green); animation: 1.8s ease-in-out infinite levo-nudge; display: inline-block; }
+.levo-landing .levo-about-teaser__link:hover .levo-about-teaser__arrow { animation-play-state: paused; transform: translate(4px); }
+@keyframes levo-nudge {
+  0%, to { transform: translate(0); }
+  50% { transform: translate(5px); }
+}
+
+/* ---------- Footer ---------- */
+.levo-footer {
+  font-size: 12px;
+  font-family: var(--lv-mono);
+  letter-spacing: 0.04em;
+  border-top: 1px solid #ffffff14;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 34px;
+  padding: 30px 6vw;
+  display: flex;
+}
+.levo-landing .levo-footer a { color: #5a5a57; transition: color 0.16s; }
+.levo-landing .levo-footer a:hover { color: #fff; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .levo-card__sticky { grid-template-columns: 1fr; align-content: center; gap: 6vh; }
+  .levo-card__svg { order: 2; max-height: 38vh; }
+  .levo-whatis { grid-template-columns: 1fr; gap: 28px; padding: 12vh 6vw; }
+  .levo-card__svg--wide { max-height: 40vh; }
+}
+@media (max-width: 640px) {
+  .levo-hero__title span { white-space: normal; }
+  .levo-hero__foot { gap: 12px; font-size: 10px; }
+  .levo-hero__actions { flex-wrap: wrap; }
+  .levo-leistungen-head { flex-direction: column; align-items: flex-start; gap: 20px; padding: 12vh 6vw 8vh; }
+  .levo-hero .levo-hero__title { gap: 0; font-size: clamp(2rem, 8.4vw, 2.9rem); line-height: 1.12; display: block; }
+  .levo-hero .levo-hero__title span { display: inline; }
+  .levo-card__points { gap: 8px; font-size: 0.92rem; }
+  .levo-hero .hero-in { min-width: 0; max-width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .levo-cta__cursor,
+  .levo-about-teaser__arrow,
+  .levo-hero .hero-in > * { animation: none; }
+}
