@@ -36,3 +36,5 @@ jobs:
           local-dir: ./out/
           # The FTP login already lands inside public_html
           server-dir: ./
+          # Fresh sync-state file: the old one listed files that were deleted by hand on the server
+          state-name: .ftp-deploy-sync-state-v2.json
